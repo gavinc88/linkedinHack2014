@@ -27,6 +27,6 @@
   	text-align:center;
   	font-family: 'Titillium Web', sans-serif;
 }
-.btn:hover{
+.btn:hover, .maggie:hover{
 	color:#ffffff;
 }
