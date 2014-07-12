@@ -2,7 +2,7 @@
 	background: #404343;
 }
 
-.btn, .maggie{
+.btn{
 	float: right;
 	top: 30px;
 	color: #B21E01;
@@ -27,6 +27,6 @@
   	text-align:center;
   	font-family: 'Titillium Web', sans-serif;
 }
-.btn:hover, .maggie:hover{
+.btn:hover{
 	color:#ffffff;
 }
