@@ -12,7 +12,6 @@
 	<title>GeoPhoto</title>
     <div class="header"></div>
     <link rel="stylesheet" href="css/map.css">
-    <link rel="stylesheet" href="css/popover.css">
 </head>
 <body>
 	<div class="container">
@@ -20,15 +19,6 @@
 			<div class="page"></div>
 		</center>
 	</div>
-
-    <script>$("#baseDiv").click(function(e) {
-    $("#popUpDiv").show();
-
-    });
-    $("#popupSelect").change(function(e) {
-    $("#baseDiv").html($("#popupSelect").val() + ' clicked. Click again to change.');
-    $("#popUpDiv").hide();
-    });</script>
 
 	<script type="text/template" id="header-template">
 		<h1>GeoPhoto</h1>
@@ -39,14 +29,8 @@
 		<% } else { %>
 			<a href="#/login" class="btn" id="login-button">Log In/Sign Up</a>
 		<% } %>
-        <a id="baseDiv">Friends</a>
-        <a id="popUpDiv">
-            <select id="popupSelect">
-                <option value="Gavin">Gavin</option>
-                <option value="Maggie">Maggie</option>
-                <option value="Tony">Tony</option>
-            </select>
-        </a>
+        <a id="baseDiv">Friends: </a>
+        <a id="popUpDiv" href="/#/maggie"> maggie </a>
     </script>
 
 	<script type="text/template" id="login-template">

@@ -334,6 +334,17 @@ var MapView = Parse.View.extend({
   }
 });
 
+var friendView = Parse.View.extend({
+    el: '.page',
+    render: function(type) {
+        var template = _.template($('#friend-template').html(), {});
+        this.$el.html(template);
+    }
+});
+
+var friendView = new friendView();
+
+
 function setupMapOptions(lat, lng) {
   var mapOptions = {
     center : new google.maps.LatLng(lat, lng),
