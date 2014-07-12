@@ -26,16 +26,15 @@
   	text-decoration:none;
   	text-align:center;
   	font-family: 'Titillium Web', sans-serif;
+    padding: 6px 2px;
 }
 .maggie{
   color: #B21E01;
   margin: 20px 20px;
-  padding: 6px 6px;
 }
 .post{
   color: #B21E01;
   margin: 20px 20px;
-  padding: 6px 6px;
 }
 .btn:hover{
 	color:#ffffff;
