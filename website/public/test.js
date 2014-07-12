@@ -358,7 +358,10 @@ function setupMapOptions(lat, lng, z) {
     minZoom : 2,
     //Turn off the map controls as we will be adding our own later.
     panControl: false,
-    mapTypeControl: false
+    mapTypeControl: false,
+    mapTypeControlOptions: {
+      mapTypeIds: [ 'map_styles']
+    }
   }
   return mapOptions;
 }
@@ -383,9 +386,40 @@ function setupMapOptions(lat, lng, z) {
 //  mapTypeControl: false
 //};
 
+var style_json =
+  [
+    {
+      "featureType": "landscape",
+      "stylers": [
+        { "color": "#C8DCA8" }
+      ]
+    },{
+    "featureType": "water",
+    "stylers": [
+      { "color": "#436FCC" }
+    ]
+  },{
+    "elementType": "geometry.stroke",
+    "stylers": [
+      { "color": "#ffffff" },
+      { "weight": 2.3 }
+    ]
+  },{
+    "featureType": "road",
+    "stylers": [
+      { "visibility": "off" }
+    ]
+  },{
+  }
+  ];
+
+var styled_map = new google.maps.StyledMapType(style_json, {name: "map style"});
+
 function loadMap(options, type) {
   console.log('loadMap ' + type);
   map = new google.maps.Map(document.getElementById("map"), options);
+  map.mapTypes.set('map_styles', styled_map);
+  map.setMapTypeId('map_styles');
   if(type == "gavin")
     loadGavinMarkers();
   else if(type == "maggie")
