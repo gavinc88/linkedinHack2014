@@ -1,116 +1,99 @@
 <!doctype html>
 <html lang="en">
 <head>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.0/backbone-min.js"></script>
-	<script src="http://www.parsecdn.com/js/parse-1.2.13.min.js"></script>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.2/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.0/backbone-min.js"></script>
+    <script src="http://www.parsecdn.com/js/parse-1.2.13.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.2/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-_1-a30XkTcKW4QaxZT3fV5xR_MR1WyQ&sensor=true"></script>
-	<meta charset="utf-8">
-	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.2/css/bootstrap.css">
-	<title>GeoPhoto</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.2/css/bootstrap.css">
+    <title>MAPHOTO</title>
     <div class="header"></div>
     <link rel="stylesheet" href="css/map.css">
+    <link rel="stylesheet" href="css/headline.css">
+    <link href='http://fonts.googleapis.com/css?family=Titillium+Web' rel='stylesheet' type='text/css'>
 </head>
 <body>
-	<div class="container">
-		<center>
-			<div class="page"></div>
-		</center>
-	</div>
+<p><a href="#" class="maggie">maggie</a></p>
 
-	<script type="text/template" id="header-template">
-		<h1>GeoPhoto</h1>
-        <a href="" class="btn">Home</a>
-		<% if(user) { %>
-			<a href="" class="btn" onclick="logout()">Log Out</a>
+<div class="container">
+    <center>
+        <div class="page"></div>
+    </center>
+</div>
 
-		<% } else { %>
-			<a href="#/login" class="btn" id="login-button">Log In/Sign Up</a>
-		<% } %>
-        <a id="baseDiv">Friends: </a>
-        <a id="popUpDiv" href="/#/maggie"> maggie </a>
-    </script>
+<script type="text/template" id="header-template">
+    <a href="index.html"><img src="images/logo.png" alt="logo" id="logo"></a>
+    <% if(user) { %>
+    <a href="" class="btn" onclick="logout()">LOG OUT</a>
+    <% } else { %>
+    <a href="#/login" class="btn" id="login-button">LOG IN/SIGN UP</a>
+    <% } %>
+</script>
 
-	<script type="text/template" id="login-template">
-		<table>
-			<thead>
-				<tr>
-					<th></th><th></th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>Username</td>
-					<td><input id="login-username" type="text"></td>
-				</tr>
-				<tr>
-					<td>Password</td>
-					<td><input id="login-password" type="password"></td>
-				</tr>
-			</tbody>
-		<table>
-		<button class="login-button">Login</button>
-		<hr />
-		<table>
-			<thead>
-				<tr>
-					<th></th><th></th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>Username</td>
-					<td><input id="signup-username" type="text"></td>
-				</tr>
-				<tr>
-					<td>Email</td>
-					<td><input id="signup-email" type="text"></td>
-				</tr>
-				<tr>
-					<td>Password</td>
-					<td><input id="signup-password" type="password"></td>
-				</tr>
-				<tr>
-					<td>Confirm Password</td>
-					<td><input id="signup-password2" type="password"></td>
-				</tr>
-			</tbody>
-		</table>
-		<button class="signup-button">Sign Up</button>
-	</script>
+<script type="text/template" id="login-template">
+    <table>
+        <thead>
+        <tr>
+            <th></th><th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>Username</td>
+            <td><input id="login-username" type="text"></td>
+        </tr>
+        <tr>
+            <td>Password</td>
+            <td><input id="login-password" type="password"></td>
+        </tr>
+        </tbody>
+        <table>
+            <button class="login-button">Login</button>
+            <hr />
+            <table>
+                <thead>
+                <tr>
+                    <th></th><th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Username</td>
+                    <td><input id="signup-username" type="text"></td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td><input id="signup-email" type="text"></td>
+                </tr>
+                <tr>
+                    <td>Password</td>
+                    <td><input id="signup-password" type="password"></td>
+                </tr>
+                <tr>
+                    <td>Confirm Password</td>
+                    <td><input id="signup-password2" type="password"></td>
+                </tr>
+                </tbody>
+            </table>
+            <button class="signup-button">Sign Up</button>
+</script>
 
-	<script type = "text/template" id="post-item-template">
-		<center>
-		<label>Item</label>
-		<input id="post-item-title" type="text" value="<%= item ? item.get('title') : '' %>"><br>
-		<label>Price</label>
-		<input id="post-item-price" type="text" value="<%= item ? item.get('price') : '' %>"><br>
-		<label>Description</label><br>
-		<textarea id="post-item-description" value="<%= item ? item.get('description') : '' %>" rows="5" cols="50"></textarea>
-		<br>
-		<label>Picture</label>
-		<input id="post-item-picture" type="file"><br>
-		<% if(item) { %> 	
-			<button class="edit-item-button">Save</button>
-			<br><br>
-			<input id="edit-item-id" type="hidden" value="<%= item.id %>">
-		<% } else { %>
-			<button class="post-item-button">Post</button>
-		<% } %>
-		<% if(item ? item.get("picture") : false) { %>
-			<img src="<%= item.get("picture").url() %>">
-		<% } %>
-		</center>
-	</script>
+<script type="text/template" id="map-template">
+    <center>
+        <div id="map">
+    </center>
+</script>
 
-	<script type="text/template" id="map-template">
-		<center>
-            <div id="map">
-		</center>
-	</script>
+<script>
+    $('.maggie').click(function() {
+        router.navigate('maggie', {trigger: true});
+        return false;
+    });
+</script>
 
-	<script src="test.js"></script>
+<script src="test.js"></script>
 </body>
 </html>
