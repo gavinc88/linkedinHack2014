@@ -672,7 +672,8 @@ var Router = Parse.Router.extend({
         "post": "post",
         "login" : "login",
         "viewItem/:id" : "viewItem",
-        "items" : "viewMyItems"
+        "items" : "viewMyItems",
+        "intro" : "intro"
     }
 });
 
@@ -707,6 +708,10 @@ router.on("route:viewItem", function(id) {
 
 router.on("route:viewMyItems", function() {
     myItemsView.render();
+});
+
+router.on("route:intro", function() {
+
 });
 
 Parse.history.start();
