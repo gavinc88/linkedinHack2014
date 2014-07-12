@@ -1,0 +1,16 @@
+#popUpDiv{
+    z-index: 100;
+    position: absolute;
+    background-color: rgba(123, 123,123, 0.8);
+    display: none;
+    top: 0;
+    left: 0;
+    width: 200px;
+    height: 300px;
+}
+#popupSelect{
+    z-index: 1000;
+    position: absolute;
+    top: 50;
+    left: 15;
+}

@@ -10,10 +10,9 @@
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.2/css/bootstrap.css">
 	<title>GeoPhoto</title>
-	<center>
-		<div class="header"></div>
-	</center>
+    <div class="header"></div>
     <link rel="stylesheet" href="css/map.css">
+    <link rel="stylesheet" href="css/popover.css">
 </head>
 <body>
 	<div class="container">
@@ -22,17 +21,33 @@
 		</center>
 	</div>
 
+    <script>$("#baseDiv").click(function(e) {
+    $("#popUpDiv").show();
+
+    });
+    $("#popupSelect").change(function(e) {
+    $("#baseDiv").html($("#popupSelect").val() + ' clicked. Click again to change.');
+    $("#popUpDiv").hide();
+    });</script>
+
 	<script type="text/template" id="header-template">
 		<h1>GeoPhoto</h1>
-		<hr />
-		<a href="" class="btn">Home</a>
+        <a href="" class="btn">Home</a>
 		<% if(user) { %>
 			<a href="" class="btn" onclick="logout()">Log Out</a>
+
 		<% } else { %>
 			<a href="#/login" class="btn" id="login-button">Log In/Sign Up</a>
 		<% } %>
-		<hr />	
-	</script>
+        <a id="baseDiv">Friends</a>
+        <a id="popUpDiv">
+            <select id="popupSelect">
+                <option value="Gavin">Gavin</option>
+                <option value="Maggie">Maggie</option>
+                <option value="Tony">Tony</option>
+            </select>
+        </a>
+    </script>
 
 	<script type="text/template" id="login-template">
 		<table>
