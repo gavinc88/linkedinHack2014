@@ -3,7 +3,7 @@
 }
 
 .btn{
-	left: 300px;
+	float: right;
 	color: #B21E01;
 	background-color:#A7ABB2;
     -webkit-border-top-left-radius:3px;
