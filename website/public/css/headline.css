@@ -1,7 +1,6 @@
 .header{
 	background: #404343;
 	opacity: 0.6;
-    filter: alpha(opacity=60);
     z-index: 10;
 }
 
