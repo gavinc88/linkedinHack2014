@@ -9,10 +9,11 @@
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-_1-a30XkTcKW4QaxZT3fV5xR_MR1WyQ&sensor=true"></script>
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.2/css/bootstrap.css">
-	<title>GeoPhoto</title>
+	<title>MAPHOTO</title>
     <div class="header"></div>
     <link rel="stylesheet" href="css/map.css">
     <link rel="stylesheet" href="css/popover.css">
+    <link rel="stylesheet" href="css/headline.css">
 </head>
 <body>
 	<div class="container">
@@ -31,7 +32,7 @@
     });</script>
 
 	<script type="text/template" id="header-template">
-		<h1>GeoPhoto</h1>
+		<img res="images/logo.jpg" ref="logo">
         <a href="" class="btn">Home</a>
 		<% if(user) { %>
 			<a href="" class="btn" onclick="logout()">Log Out</a>
