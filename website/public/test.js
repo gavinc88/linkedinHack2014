@@ -310,15 +310,6 @@ var PostItemView = Parse.View.extend({
 var postItemView = new PostItemView();
 
 
-const lat_ca = 37.3;
-const lng_ca = -119.4;
-
-function loadGavinMap(){
-  console.log('loadGavinMap');
-  var options = setupMapOptions(lat_ca, lng_ca);
-  loadMap(options, "gavin");
-}
-
 var MapView = Parse.View.extend({
   el: '.page',
   render: function(type) {
@@ -346,9 +337,35 @@ var friendView = new friendView();
 
 
 function setupMapOptions(lat, lng) {
+const lat_ca = 37.3;
+const lng_ca = -119.4;
+const lat_ny = 44.019484;
+const lng_ny = -81.716309;
+const lat_us = 41.700602;
+const lng_us = -90.265625;
+
+function loadGavinMap(){
+  console.log('loadGavinMap');
+  var options = setupMapOptions(lat_ca, lng_ca, 6);
+  loadMap(options, "gavin");
+}
+
+function loadMaggieMap(){
+  console.log('loadMaggieMap');
+  var options = setupMapOptions(lat_ny, lng_ny, 6);
+  loadMap(options, "maggie");
+}
+
+function loadAllMap(){
+  console.log('loadAllMap');
+  var options = setupMapOptions(lat_us, lng_us, 2);
+  loadMap(options, "all");
+}
+
+function setupMapOptions(lat, lng, z) {
   var mapOptions = {
     center : new google.maps.LatLng(lat, lng),
-    zoom : 6,
+    zoom : z,
     maxZoom : 15,
     minZoom : 2,
     //Turn off the map controls as we will be adding our own later.
@@ -358,30 +375,35 @@ function setupMapOptions(lat, lng) {
   return mapOptions;
 }
 
-var mapCenter = new google.maps.LatLng(37.386052, -122.083851);
-//The degree to which the map is zoomed in. This can range from 0 (least zoomed) to 21 and above (most zoomed).
-var mapZoom = 8;
-//The max and min zoom levels that are allowed.
-var mapZoomMax = 15;
-var mapZoomMin = 6;
-
-//These options configure the setup of the map.
-var mapOptions = {
-  center: mapCenter,
-  zoom: mapZoom,
-  //The type of map. In addition to ROADMAP, the other 'premade' map styles are SATELLITE, TERRAIN and HYBRID.
-  mapTypeId: google.maps.MapTypeId.ROADMAP,
-  maxZoom:mapZoomMax,
-  minZoom:mapZoomMin,
-  //Turn off the map controls as we will be adding our own later.
-  panControl: false,
-  mapTypeControl: false
-};
+//var mapCenter = new google.maps.LatLng(37.386052, -122.083851);
+////The degree to which the map is zoomed in. This can range from 0 (least zoomed) to 21 and above (most zoomed).
+//var mapZoom = 8;
+////The max and min zoom levels that are allowed.
+//var mapZoomMax = 15;
+//var mapZoomMin = 6;
+//
+////These options configure the setup of the map.
+//var mapOptions = {
+//  center: mapCenter,
+//  zoom: mapZoom,
+//  //The type of map. In addition to ROADMAP, the other 'premade' map styles are SATELLITE, TERRAIN and HYBRID.
+//  mapTypeId: google.maps.MapTypeId.ROADMAP,
+//  maxZoom:mapZoomMax,
+//  minZoom:mapZoomMin,
+//  //Turn off the map controls as we will be adding our own later.
+//  panControl: false,
+//  mapTypeControl: false
+//};
 
 function loadMap(options, type) {
   console.log('loadMap ' + type);
   map = new google.maps.Map(document.getElementById("map"), options);
-  loadMapMarkers(type);
+  if(type == "gavin")
+    loadGavinMarkers();
+  else if(type == "maggie")
+    loadMaggieMarkers();
+  else if(type == "all")
+    loadAllMarkers();
 }
 
 const lat_berkeley = 37.871593;
@@ -391,14 +413,14 @@ const lng_la = -118.243685;
 const lat_vegas = 36.169941;
 const lng_vegas = -115.13983;
 
-function loadMapMarkers(type) {
-  if(type == "gavin")
-    loadGavinMarkers();
-  else if(type == "maggie")
-    loadMaggieMarkers();
-  else if(type == "all")
-    loadAllMarkers();
-}
+const lat_montreal = 45.50867;
+const lng_montreal = -73.553992;
+const lat_nyc = 40.712784;
+const lng_nyc = -74.005941;
+const lat_ithaca = 42.443961;
+const lng_ithaca = -76.501881;
+const lat_illinois = 40.633125;
+const lng_illinois = -89.398528;
 
 function loadGavinMarkers(){
   console.log('loadGavinMarkers');
@@ -414,7 +436,6 @@ function loadGavinMarkers(){
     map: map,
     title: 'berkeley',
     icon: berkeleyIcon,
-//    shape: markerShape,
     zIndex: 101
   });
 
@@ -445,7 +466,70 @@ function loadGavinMarkers(){
     map: map,
     title: 'vegas',
     icon: vegasIcon,
+    zIndex: 103
+  });
+}
+
+function loadMaggieMarkers(){
+  console.log('loadMaggieMarkers');
+  var nycPosition = new google.maps.LatLng(lat_nyc, lng_nyc);
+  var nycIcon = {
+    url: 'images/pin_nyc.png',
+    scaledSize: new google.maps.Size(90, 126),
+    origin: new google.maps.Point(0, 0),
+    anchor: new google.maps.Point(45, 126)
+  };
+  nycMarker = new google.maps.Marker({
+    position: nycPosition,
+    map: map,
+    title: 'new york city',
+    icon: nycIcon,
+    zIndex: 103
+  });
+
+  var montrealPosition = new google.maps.LatLng(lat_montreal, lng_montreal);
+  var montrealIcon = {
+    url: 'images/pin_montreal.png',
+    scaledSize: new google.maps.Size(90, 126),
+    origin: new google.maps.Point(0, 0),
+    anchor: new google.maps.Point(45, 126)
+  };
+  montrealMarker = new google.maps.Marker({
+    position: montrealPosition,
+    map: map,
+    title: 'montreal',
+    icon: montrealIcon,
     zIndex: 102
+  });
+
+  var ithacaPosition = new google.maps.LatLng(lat_ithaca, lng_ithaca);
+  var ithacaIcon = {
+    url: 'images/pin_ithaca.png',
+    scaledSize: new google.maps.Size(120, 172),
+    origin: new google.maps.Point(0, 0),
+    anchor: new google.maps.Point(60, 172)
+  };
+  ithacaMarker = new google.maps.Marker({
+    position: ithacaPosition,
+    map: map,
+    title: 'ithaca',
+    icon: ithacaIcon,
+    zIndex: 101
+  });
+
+  var illinoisPosition = new google.maps.LatLng(lat_illinois, lng_illinois);
+  var illinoisIcon = {
+    url: 'images/pin_illinois.png',
+    scaledSize: new google.maps.Size(66, 90),
+    origin: new google.maps.Point(0, 0),
+    anchor: new google.maps.Point(33, 90)
+  };
+  illinoisMarker = new google.maps.Marker({
+    position: illinoisPosition,
+    map: map,
+    title: 'illinois',
+    icon: illinoisIcon,
+    zIndex: 104
   });
 }
 
@@ -528,4 +612,4 @@ router.on("route:viewMyItems", function() {
 	myItemsView.render();
 });
 
-Parse.history.start();
+Parse.history.start();}
