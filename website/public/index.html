@@ -6,12 +6,14 @@
 	<script src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.0/backbone-min.js"></script>
 	<script src="http://www.parsecdn.com/js/parse-1.2.13.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.2/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-_1-a30XkTcKW4QaxZT3fV5xR_MR1WyQ&sensor=true"></script>
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.2/css/bootstrap.css">
 	<title>GeoPhoto</title>
 	<center>
 		<div class="header"></div>
 	</center>
+    <link rel="stylesheet" href="css/map.css">
 </head>
 <body>
 	<div class="container">
@@ -106,10 +108,12 @@
 
 	<script type="text/template" id="map-template">
 		<center>
-			Map
+            <div id="map">
 		</center>
 	</script>
 
 	<script src="test.js"></script>
+    <script src="js/routes.js"></script>
+    <script src="js/map.js"></script>
 </body>
 </html>

@@ -309,17 +309,6 @@ var PostItemView = Parse.View.extend({
 
 var postItemView = new PostItemView();
 
-// Main page of items view
-var MapView = Parse.View.extend({
-	el: '.page',
-	render: function() {
-		var template = _.template($('#map-template').html(), {});
-		this.$el.html(template);
-	}
-});
-
-var mapView = new MapView();
-
 var Router = Parse.Router.extend({
 	routes: {
 	   	"": "home",
