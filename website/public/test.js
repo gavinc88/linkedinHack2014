@@ -638,6 +638,21 @@ function loadAllMarkers(){
     zIndex: 103
   });
 
+  var berkeleyPosition = new google.maps.LatLng(lat_berkeley, lng_berkeley);
+  var berkeleyIcon = {
+    url: 'images/pin_norcal.png',
+    scaledSize: new google.maps.Size(140, 200),
+    origin: new google.maps.Point(0, 0),
+    anchor: new google.maps.Point(70, 200)
+  };
+  berkeleyMarker = new google.maps.Marker({
+    position: berkeleyPosition,
+    map: map,
+    title: 'berkeley',
+    icon: berkeleyIcon,
+    zIndex: 101
+  });
+
   google.maps.event.addListener(nycMarker, "click", function (e) {
     console.log("nycCombinedMarker clicked");
     galleryViewAll.render();

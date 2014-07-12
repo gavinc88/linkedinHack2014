@@ -25,16 +25,17 @@
             <div class="galleryPage"></div>
 		</center>
 	</div>
-<script type="text/template" id="header-template">
-    <a href="index.html"><img src="images/logo.png" alt="logo" id="logo"></a>
-    <% if(user) { %>   
-    <a href="" class="btn" onclick="logout()">　LOG OUT　</a>
-    <div class="btn"><a href="#" class="maggie">FRIEND</a></div>
-    <div class="btn"><a href="#" class="post">POST</a></div>
-    <% } else { %>
-    <a href="#/login" class="btn" id="login-button">LOG IN/SIGN UP</a>
-    <% } %>
-</script>
+
+    <script type="text/template" id="header-template">
+        <a href="index.html"><img src="images/logo.png" alt="logo" id="logo"></a>
+        <% if(user) { %>
+        <a href="" class="btn" onclick="logout()">　LOG OUT　</a>
+        <a class="btn" href="#" class="maggie">FRIEND</a>
+        <a class="btn" href="#/post" class="post">POST</a>
+        <% } else { %>
+        <a href="#/login" class="btn" id="login-button">LOG IN/SIGN UP</a>
+        <% } %>
+    </script>
 
     <script type="text/template" id="login-template">
 
@@ -75,11 +76,31 @@
         <!--button class="signup-button">Sign Up</button-->
     </script>
 
-<script type="text/template" id="map-template">
-    <center>
-        <div id="map">
-    </center>
-</script>
+    <script type="text/template" id="map-template">
+        <center>
+            <div id="map">
+        </center>
+    </script>
+
+    <script type = "text/template" id="post-item-template">
+        <center>
+            <label>Description</label>
+            <input id="post-item-title" type="text" value="<%= item ? item.get('title') : '' %>"><br>
+            <br>
+            <label>Picture</label>
+            <input id="post-item-picture" type="file"><br>
+            <% if(item) { %>
+                <button class="edit-item-button">Save</button>
+                <br><br>
+                <input id="edit-item-id" type="hidden" value="<%= item.id %>">
+            <% } else { %>
+                <button class="post-item-button">Post</button>
+            <% } %>
+            <% if(item ? item.get("picture") : false) { %>
+                <img src="<%= item.get("picture").url() %>">
+            <% } %>
+            </center>
+    </script>
 
     <script>
         $('.maggie').click(function() {
