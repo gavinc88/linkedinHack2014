@@ -4,6 +4,7 @@
 
 .btn{
 	float: right;
+	top: 30px;
 	color: #B21E01;
 	background-color:#A7ABB2;
     -webkit-border-top-left-radius:3px;
@@ -21,7 +22,7 @@
   	text-indent:0;
   	border:1px solid #ffffff;
   	display:inline-block;
-  	margin: 3px 0px;
+  	margin: 10px 10px;
   	text-decoration:none;
   	text-align:center;
   	font-family: 'Titillium Web', sans-serif;
