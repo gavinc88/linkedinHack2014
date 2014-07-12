@@ -2,7 +2,7 @@
 	background: #404343;
 }
 
-.login-button{
+.btn{
 	left: 300px;
 	color: #B21E01;
 	background-color:#A7ABB2;
@@ -21,4 +21,7 @@
   text-indent:0;
   border:1px solid #ffffff;
   display:inline-block;
+  margin: 3px 0px;
+  text-decoration:none;
+  text-align:center;
 }
