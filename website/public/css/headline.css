@@ -29,6 +29,11 @@
 }
 .maggie{
   color: #B21E01;
+  margin: 20px 25px;
+}
+.post{
+  color: #B21E01;
+  margin: 20px 30px;
 }
 .btn:hover{
 	color:#ffffff;
