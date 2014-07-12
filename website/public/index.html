@@ -66,11 +66,11 @@ function detectBrowser()
     <div class="btn"><a href="#" class="maggie">FRIEND</a></div>
     <div class="btn"><a href="#" class="post">POST</a></div>
     <% } else { %>
-    <a href="#/login" class="btn" id="login-button" onload="detectBrowser()">LOG IN/SIGN UP</a>
+    <a href="#/login" class="btn" id="login-button" >LOG IN/SIGN UP</a>
     <% } %>
 </script>
 
-    <script type="text/template" id="login-template">
+    <script type="text/template" id="login-template" onload="detectBrowser()">
 
 
         <div class="col-md-6">
