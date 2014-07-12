@@ -36,18 +36,19 @@
 		<a href="index.html"><img src="images/logo.png" alt="logo" id="logo"></a>
 		<% if(user) { %>
 			<a href="" class="btn" onclick="logout()">LOG OUT</a>
-
-		<% } else { %>
-			<a href="#/login" class="btn" id="login-button">LOG IN/SIGN UP</a>
-		<% } %>
-        <a id="baseDiv" class="btn">FRIENDS</a>
-        <a id="popUpDiv">
+			<a id="baseDiv" class="btn">FRIENDS</a>
+			<a id="popUpDiv">
             <select id="popupSelect">
                 <option value="Gavin">Gavin</option>
                 <option value="Maggie">Maggie</option>
                 <option value="Tony">Tony</option>
             </select>
         </a>
+
+		<% } else { %>
+			<a href="#/login" class="btn" id="login-button">LOG IN/SIGN UP</a>
+		<% } %>    
+        
     </script>
 
 	<script type="text/template" id="login-template">
