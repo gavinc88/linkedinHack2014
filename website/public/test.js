@@ -310,15 +310,25 @@ var PostItemView = Parse.View.extend({
 var postItemView = new PostItemView();
 
 
-var GalleryView = Parse.View.extend({
+var GalleryViewGavin = Parse.View.extend({
   el: '.page',
   render: function() {
-    var template = _.template($('#gallery-template').html(), null);
+    var template = _.template($('#gallery-template-gavin').html(), null);
     this.$el.html(template);
   }
 });
 
-var galleryView = new GalleryView();
+var galleryViewGavin = new GalleryViewGavin();
+
+var GalleryViewMaggie = Parse.View.extend({
+  el: '.page',
+  render: function() {
+    var template = _.template($('#gallery-template-maggie').html(), null);
+    this.$el.html(template);
+  }
+});
+
+var galleryViewMaggie = new GalleryViewMaggie();
 
 
 var MapView = Parse.View.extend({
@@ -341,7 +351,7 @@ const lng_ca = -119.4;
 const lat_ny = 44.019484;
 const lng_ny = -81.716309;
 const lat_us = 41.700602;
-const lng_us = -90.265625;
+const lng_us = -81.265625;
 
 function loadGavinMap(){
     console.log('loadGavinMap');
@@ -357,7 +367,7 @@ function loadMaggieMap(){
 
 function loadAllMap(){
     console.log('loadAllMap');
-    var options = setupMapOptions(lat_us, lng_us, 2);
+    var options = setupMapOptions(lat_us, lng_us, 6);
     loadMap(options, "all");
 }
 
@@ -376,35 +386,6 @@ function setupMapOptions(lat, lng, z) {
     }
     return mapOptions;
 }
-
-var style_json =
-  [
-    {
-      "featureType": "landscape",
-      "stylers": [
-        { "color": "#C8DCA8" }
-      ]
-    },{
-    "featureType": "water",
-    "stylers": [
-      { "color": "#436FCC" }
-    ]
-  },{
-    "elementType": "geometry.stroke",
-    "stylers": [
-      { "color": "#ffffff" },
-      { "weight": 2.3 }
-    ]
-  },{
-    "featureType": "road",
-    "stylers": [
-      { "visibility": "off" }
-    ]
-  },{
-  }
-  ];
-
-var styled_map = new google.maps.StyledMapType(style_json, {name: "map style"});
 
 var style_json =
     [
@@ -464,6 +445,9 @@ const lng_ithaca = -76.501881;
 const lat_illinois = 40.633125;
 const lng_illinois = -89.398528;
 
+const lat_dc = 38.907192;
+const lng_dc = -77.036871;
+
 function loadGavinMarkers(){
   console.log('loadGavinMarkers');
   var berkeleyPosition = new google.maps.LatLng(lat_berkeley, lng_berkeley);
@@ -512,25 +496,20 @@ function loadGavinMarkers(){
   });
 
   google.maps.event.addListener(berkeleyMarker, "click", function (e) {
-    //Open the Glastonbury info box.
     console.log("berkeleyMarker clicked");
-    galleryView.render();
-    //Changes the z-index property of the marker to make the marker appear on top of other markers.
+    galleryViewGavin.render();
     this.setZIndex(google.maps.Marker.MAX_ZINDEX + 1);
   });
 
   google.maps.event.addListener(laMarker, "click", function (e) {
-    //Open the Glastonbury info box.
     console.log("laMarker clicked");
-    galleryView.render();
-    //Changes the z-index property of the marker to make the marker appear on top of other markers.
+    galleryViewGavin.render();
     this.setZIndex(google.maps.Marker.MAX_ZINDEX + 1);
   });
 
   google.maps.event.addListener(vegasMarker, "click", function (e) {
-    //Open the Glastonbury info box.
     console.log("vegasMarker clicked");
-    //Changes the z-index property of the marker to make the marker appear on top of other markers.
+    galleryViewGavin.render();
     this.setZIndex(google.maps.Marker.MAX_ZINDEX + 1);
   });
 }
@@ -596,7 +575,68 @@ function loadMaggieMarkers(){
         icon: illinoisIcon,
         zIndex: 104
     });
+
+  google.maps.event.addListener(illinoisMarker, "click", function (e) {
+    console.log("illinoisMarker clicked");
+    galleryViewMaggie.render();
+    this.setZIndex(google.maps.Marker.MAX_ZINDEX + 1);
+  });
 }
+
+function loadAllMarkers(){
+  console.log('loadAllMarkers');
+  var nycPosition = new google.maps.LatLng(lat_nyc, lng_nyc);
+  var nycIcon = {
+    url: 'images/pin_combined_nyc.png',
+    scaledSize: new google.maps.Size(190, 275),
+    origin: new google.maps.Point(0, 0),
+    anchor: new google.maps.Point(95, 275)
+  };
+  nycMarker = new google.maps.Marker({
+    position: nycPosition,
+    map: map,
+    title: 'new york city',
+    icon: nycIcon,
+    zIndex: 101
+  });
+
+  var dcPosition = new google.maps.LatLng(lat_dc, lng_dc);
+  var dcIcon = {
+    url: 'images/pin_combined_washington_dc.png',
+    scaledSize: new google.maps.Size(106, 146),
+    origin: new google.maps.Point(0, 0),
+    anchor: new google.maps.Point(53, 146)
+  };
+  dcMarker = new google.maps.Marker({
+    position: dcPosition,
+    map: map,
+    title: 'montreal',
+    icon: dcIcon,
+    zIndex: 102
+  });
+
+  var illinoisPosition = new google.maps.LatLng(lat_illinois, lng_illinois);
+  var illinoisIcon = {
+    url: 'images/pin_illinois.png',
+    scaledSize: new google.maps.Size(66, 90),
+    origin: new google.maps.Point(0, 0),
+    anchor: new google.maps.Point(33, 90)
+  };
+  illinoisMarker = new google.maps.Marker({
+    position: illinoisPosition,
+    map: map,
+    title: 'illinois',
+    icon: illinoisIcon,
+    zIndex: 103
+  });
+
+  google.maps.event.addListener(nycMarker, "click", function (e) {
+    console.log("nycCombinedMarker clicked");
+    galleryViewMaggie.render();
+    this.setZIndex(google.maps.Marker.MAX_ZINDEX + 1);
+  });
+}
+
 
 var mapView = new MapView();
 

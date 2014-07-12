@@ -13,7 +13,6 @@
 	<title>MAPHOTO</title>
     <div class="header"></div>
     <link rel="stylesheet" href="css/map.css">
-    <link rel="stylesheet" href="css/popover.css">
     <link rel="stylesheet" href="css/headline.css">
     <link href='http://fonts.googleapis.com/css?family=Titillium+Web' rel='stylesheet' type='text/css'>
 </head>
@@ -95,8 +94,10 @@
     });
 </script>
 
-    <script type="text/template" id="gallery-template">
+    <script type="text/template" id="gallery-template-gavin">
+        <div href="#" class="btn btn-large btn-success">Close</div>
         <div class="container" height="700px">
+
         <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
             <!-- Indicators -->
             <ol class="carousel-indicators">
@@ -110,31 +111,31 @@
             <!-- Wrapper for slides -->
             <div class="carousel-inner">
                 <div class="item active">
-                    <img src="images/norcal_dinner_cruise.jpg" alt="">
+                    <img src="images/norcal_dinner_cruise.jpg" alt="SF Dinner Cruise">
                     <div class="carousel-caption">
                         SF Dinner Cruise
                     </div>
                 </div>
                 <div class="item">
-                    <img src="images/norcal_dave_and_buster.jpg" alt="">
+                    <img src="images/norcal_dave_and_buster.jpg" alt="Linkedin Dave & Buster">
                     <div class="carousel-caption">
                         Linkedin Dave & Buster
                     </div>
                 </div>
                 <div class="item">
-                    <img src="images/norcal_bars.jpg" alt="">
+                    <img src="images/norcal_bars.jpg" alt="Andy's 21 Bday Bar Hopping">
                     <div class="carousel-caption">
                         Andy's 21 Bday Bar Hopping
                     </div>
                 </div>
                 <div class="item">
-                    <img src="images/norcal_mission_peak.jpg" alt="">
+                    <img src="images/norcal_mission_peak.JPG" alt="Mission Peak">
                     <div class="carousel-caption">
                         Mission Peak
                     </div>
                 </div>
                 <div class="item">
-                    <img src="images/norcal_dinner.jpg" alt="">
+                    <img src="images/norcal_dinner.jpg" alt="Andy's Bday Dinner">
                     <div class="carousel-caption">
                         Andy's Bday Dinner
                     </div>
@@ -151,6 +152,35 @@
         </div>
         </div>
     </script>
+
+<script type="text/template" id="gallery-template-maggie">
+    <div href="#" class="btn btn-large btn-success">Close</div>
+
+    <div class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+        </ol>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner">
+            <div class="item active">
+                <img src="images/illinois.JPG" alt="Illinois">
+                <div class="carousel-caption">
+                    Illinois
+                </div>
+            </div>
+        </div>
+
+        <!-- Controls -->
+        <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+        </a>
+        <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+        </a>
+    </div>
+</script>
 
 	<script src="test.js"></script>
 </body>
