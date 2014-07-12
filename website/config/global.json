@@ -1,0 +1,14 @@
+{
+    "applications": {
+        "LinkedinHack2014": {
+            "applicationId": "VWkjUjyYiGFBJ9XxJ7okPISEA1zPvjc1at7En7gu", 
+            "masterKey": "OAYuNkW7eCElACp6SOV3sq9Skrran0e719v8M0Yo"
+        }, 
+        "_default": {
+            "link": "LinkedinHack2014"
+        }
+    }, 
+    "global": {
+        "parseVersion": "1.2.19"
+    }
+}
