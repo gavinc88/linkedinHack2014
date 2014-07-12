@@ -173,7 +173,7 @@ var LoginView = Parse.View.extend({
     },
     render: function() {
         if(Parse.User.current()) {
-            router.navigate('', {trigger: true});
+            router.navigate('#/gavin', {trigger: true});
         } else {
             var template = _.template($('#login-template').html(), null);
             this.$el.html(template);
@@ -330,6 +330,15 @@ var GalleryViewMaggie = Parse.View.extend({
 
 var galleryViewMaggie = new GalleryViewMaggie();
 
+var GalleryViewAll = Parse.View.extend({
+  el: '.page',
+  render: function() {
+    var template = _.template($('#gallery-template-all').html(), null);
+    this.$el.html(template);
+  }
+});
+
+var galleryViewAll = new GalleryViewAll();
 
 var MapView = Parse.View.extend({
     el: '.page',
@@ -444,7 +453,6 @@ const lat_ithaca = 42.443961;
 const lng_ithaca = -76.501881;
 const lat_illinois = 40.633125;
 const lng_illinois = -89.398528;
-
 const lat_dc = 38.907192;
 const lng_dc = -77.036871;
 
@@ -632,18 +640,17 @@ function loadAllMarkers(){
 
   google.maps.event.addListener(nycMarker, "click", function (e) {
     console.log("nycCombinedMarker clicked");
-    galleryViewMaggie.render();
+    galleryViewAll.render();
     this.setZIndex(google.maps.Marker.MAX_ZINDEX + 1);
   });
 }
-
 
 var mapView = new MapView();
 
 var Router = Parse.Router.extend({
     routes: {
         "": "home",
-        "gavin" : "home",
+        "gavin" : "gavin",
         "maggie" : "maggie",
         "all" : "all",
         "edit/:id": "post",
@@ -656,7 +663,11 @@ var Router = Parse.Router.extend({
 
 var router = new Router();
 router.on("route:home", function() {
-    mapView.render("gavin");
+  loginView.render();
+});
+
+router.on("route:gavin", function() {
+  mapView.render("gavin");
 });
 
 router.on("route:maggie", function() {
